@@ -23,7 +23,8 @@ var ttlmap = map[string]uint32{
 }
 
 func TestMain(m *testing.M) {
-	config.ParseConf("/Users/chunsheng/GooleDrive/Work/github/16.httpDispacher/conf/httpdispacher.toml")
+//	config.ParseConf("/Users/chunsheng/GooleDrive/Work/github/16.httpDispacher/conf/httpdispacher.toml")
+	config.ParseConf("/home/huang/workspace/golang/src/httpdns/httpDispacher/conf/httpdispacher.toml")
 	if config.RC.MySQLEnabled {
 		RC_MySQLConf = config.RC.MySQLConf
 		InitMySQL(RC_MySQLConf)
@@ -234,16 +235,16 @@ func TestQuerySOA(t *testing.T) {
 		"yahoo.com":                          "zzzz",
 		"weibo.cn":                           "xxxx",
 		"www.baidu.com":                      "ns2.baidu.com.",
-		"www.a.shifen.com":                   "ns1.a.shifen.com.",
-		"a.shifen.com":                       "ns1.a.shifen.com.",
-		"www2.sinaimg.cn":                    "ns1.sina.com.cn.",
-		"weboimg.gslb.sinaedge.com":          "ns2.sinaedge.com.",
-		"api.weibo.cn":                       "ns1.sina.com.cn.",
-		"img.alicdn.com":                     "ns8.alibabaonline.com.",
-		"alicdn.com":                         "yyyy",
-		"img.alicdn.com.danuoyi.alicdn.com.": "danuoyinewns1.gds.alicdn.com.",
-		"danuoyi.alicdn.com.":                "xxxxx",
-		"fjdsljflsj.jfslj":                   "...",
+//		"www.a.shifen.com":                   "ns1.a.shifen.com.",
+//		"a.shifen.com":                       "ns1.a.shifen.com.",
+//		"www2.sinaimg.cn":                    "ns1.sina.com.cn.",
+//		"weboimg.gslb.sinaedge.com":          "ns2.sinaedge.com.",
+//		"api.weibo.cn":                       "ns1.sina.com.cn.",
+//		"img.alicdn.com":                     "ns8.alibabaonline.com.",
+//		"alicdn.com":                         "yyyy",
+//		"img.alicdn.com.danuoyi.alicdn.com.": "danuoyinewns1.gds.alicdn.com.",
+//		"danuoyi.alicdn.com.":                "xxxxx",
+//		"fjdsljflsj.jfslj":                   "...",
 	}
 	for k, _ := range dsmap {
 		t.Log("----------------------------------")

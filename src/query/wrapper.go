@@ -57,11 +57,11 @@ func GetARecord(d string, srcIP string) (bool, []dns.RR, *MyError.MyError) {
 	//Can't loop for CNAME chain than bigger than 10
 	for dst := d; (bigloopflag == false) && (c < CNAME_CHAIN_LENGTH); c++ {
 		//fmt.Println(utils.GetDebugLine(), "GetARecord : ", dst, " srcIP: ", srcIP)
-		utils.ServerLogger.Debug("GetARecord : %s srcIP: %s", dst, srcIP)
+		utils.ServerLogger.Debugf("GetARecord : %s srcIP: %s", dst, srcIP)
 
 		ok, dn, RR, e := GetAFromCache(dst, srcIP)
 		//fmt.Println(utils.GetDebugLine(), " GetAFromCache return : ", ok, dn, RR, e)
-		utils.ServerLogger.Debug("GetAFromCache return: ", ok, dn, RR, e)
+		utils.ServerLogger.Debugf("GetAFromCache return: ", ok, dn, RR, e)
 		if ok {
 			// All is right and especilly RR is A record
 			return ok, RR, nil

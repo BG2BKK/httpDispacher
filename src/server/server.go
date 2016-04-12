@@ -79,8 +79,8 @@ func HttpDispacherQueryServe(w http.ResponseWriter, r *http.Request) {
 	if x := net.ParseIP(srcIP); x == nil {
 		w.WriteHeader(http.StatusForbidden)
 		fmt.Fprint(w, srcIP)
-		fmt.Fprintln(w, "src ip : "+srcIP+" is not correct")
-		utils.ServerLogger.Warning("src ip : %s is not correct", srcIP)
+		fmt.Fprintln(w, " src ip : "+srcIP+" is not correct")
+		utils.ServerLogger.Warningf("src ip : %s is not correct", srcIP)
 		return
 	}
 
@@ -92,18 +92,18 @@ func HttpDispacherQueryServe(w http.ResponseWriter, r *http.Request) {
 			for _, ree := range re {
 				if a, ok := ree.(*dns.A); ok {
 					fmt.Fprintln(w, a.A.String())
-					utils.ServerLogger.Debug("query result: %s ", a.A.String())
+					utils.ServerLogger.Debugf("query result: %s ", a.A.String())
 				} else {
 					fmt.Fprintln(w, ree.String())
-					utils.ServerLogger.Debug("query result: %s ", ree.String())
+					utils.ServerLogger.Debugf("query result: %s ", ree.String())
 				}
 			}
 		} else if e != nil {
 			fmt.Fprintln(w, e.Error())
-			utils.ServerLogger.Error("query domain: %s src_ip: %s  %s", query_domain, srcIP, e.Error())
+			utils.ServerLogger.Errorf("query domain: %s src_ip: %s  %s", query_domain, srcIP, e.Error())
 		} else {
 			fmt.Fprintln(w, "unkown error!\n")
-			utils.ServerLogger.Error("query domain: %s src_ip: %s fail unkown error!", query_domain, srcIP)
+			utils.ServerLogger.Errorf("query domain: %s src_ip: %s fail unkown error!", query_domain, srcIP)
 		}
 	} else {
 		w.WriteHeader(http.StatusForbidden)
@@ -125,12 +125,12 @@ func NewServer() {
 	}
 	listener, err := net.Listen("tcp", config.RC.Bind)
 	if nil != err {
-		utils.ServerLogger.Critical("Create listener error: %s", err.Error())
+		utils.ServerLogger.Criticalf("Create listener error: %s", err.Error())
 		os.Exit(1)
 	}
 	defer listener.Close()
 	if err := server.Serve(listener); nil != err {
-		utils.ServerLogger.Critical("Call server error: %s", err.Error())
+		utils.ServerLogger.Criticalf("Call server error: %s", err.Error())
 		os.Exit(1)
 	}
 

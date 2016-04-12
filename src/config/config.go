@@ -9,7 +9,7 @@ import (
 	"github.com/miekg/dns"
 )
 
-var ConfigFile string
+var ConfigFile = "/home/huang/workspace/golang/src/httpdns/httpDispacher/conf/httpdispacher.toml"
 var EnableProfile bool
 var RC *RuntimeConfiguration
 
@@ -36,7 +36,14 @@ type RuntimeConfiguration struct {
 }
 
 func InitConfig() {
-	ParseCommandline()
+	//ParseCommandline()
+	fd, e := os.Open(ConfigFile)
+	if e != nil {
+		fmt.Println("The configuration file open failed : " + e.Error())
+		os.Exit(1)
+	} else {
+		fd.Close()
+	}
 	if ConfigFile != "" {
 		ParseConf(ConfigFile)
 	} else {

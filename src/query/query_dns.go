@@ -244,6 +244,7 @@ func preQuery(d, srcIP string) (*dns.OPT, *MyError.MyError) {
 
 	var o *dns.OPT
 	if len(srcIP) > 0 {
+//	    utils.ServerLogger.Debugf("aaaaaaaaaaaaaaaaaa srcIP: %s", srcIP)
 		o = PackEdns0SubnetOPT(srcIP, DEFAULT_SOURCEMASK, DEFAULT_SOURCESCOPE)
 	} else {
 		o = nil
@@ -337,6 +338,7 @@ func ParseSOA(d string, r []dns.RR) (*dns.SOA, []*dns.NS, *MyError.MyError) {
 	for _, v := range r {
 		vh := v.Header()
 		if vh.Name == dns.Fqdn(d) || dns.IsSubDomain(vh.Name, dns.Fqdn(d)) {
+            utils.ServerLogger.Debug("ParseSOA: %s : %s", vh.Name, dns.Fqdn(d))
 			switch vh.Rrtype {
 			case dns.TypeSOA:
 				if vv, ok := v.(*dns.SOA); ok {
@@ -361,6 +363,8 @@ func ParseSOA(d string, r []dns.RR) (*dns.SOA, []*dns.NS, *MyError.MyError) {
 
 	}
 	if soa != nil {
+        utils.ServerLogger.Debug("ParseSOA: %v", soa)
+        utils.ServerLogger.Debug("ParseSOA: %v", ns_a)
 		return soa, ns_a, nil
 	} else {
 		return nil, nil, MyError.NewError(MyError.ERROR_NORESULT, "No SOA record for domain "+d)

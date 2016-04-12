@@ -1,0 +1,87 @@
+Runtime Configurations:
+	BindTo:           0.0.0.0:8080
+	Enabled domains:  [api.weibo.cn. weibo.cn. taobao.com. www.baidu.com. www.taobao.com.]
+	MySQL enabled:    false
+	IPDB Path:        
+	ServerLog:        ./httpdispacher.server.log
+	QueryLog:         ./httpdispacher.query.log
+	ServerLogFormat:         %{time:2006-01-02T15:04:05} %{shortfile}|%{shortfunc} %{level:.4s} %{id:03x} %{message}
+	QueryLogFormat:        %{time:2006-01-02T15:04:05} %{shortfile}|%{shortfunc} %{level:.4s} %{id:03x} %{message}
+	Loglevel:         INFO
+Notice: MySQL backend is disabled
+=== RUN   TestQuerySOA
+--- PASS: TestQuerySOA (0.62s)
+	query_test.go:250: ----------------------------------
+	query_test.go:251: baidu.com
+	query_test.go:254: baidu.com.
+	query_test.go:255: 6
+	query_test.go:256: 1
+	query_test.go:257: dns.baidu.com.
+	query_test.go:258: 2592000
+	query_test.go:259: sa.baidu.com.
+	query_test.go:260: 7200
+	query_test.go:261: 300
+	query_test.go:265: [baidu.com.	18502	IN	NS	ns4.baidu.com. baidu.com.	18502	IN	NS	ns3.baidu.com. baidu.com.	18502	IN	NS	ns7.baidu.com. baidu.com.	18502	IN	NS	dns.baidu.com. baidu.com.	18502	IN	NS	ns2.baidu.com.]
+	query_test.go:266: ----------------------------------
+	query_test.go:250: ----------------------------------
+	query_test.go:251: www.google.com
+	query_test.go:254: www.google.com.
+	query_test.go:255: 6
+	query_test.go:256: 1
+	query_test.go:257: www.google.com.
+	query_test.go:258: 604800
+	query_test.go:259: zhihao.staff.sina.com.cn.
+	query_test.go:260: 600
+	query_test.go:261: 7200
+	query_test.go:265: [www.google.com.	60	IN	NS	ns1.www.google.com. www.google.com.	60	IN	NS	ns2.www.google.com.]
+	query_test.go:266: ----------------------------------
+	query_test.go:250: ----------------------------------
+	query_test.go:251: www.yahoo.com
+	query_test.go:254: yahoo.com.
+	query_test.go:255: 6
+	query_test.go:256: 1
+	query_test.go:257: ns1.yahoo.com.
+	query_test.go:258: 1814400
+	query_test.go:259: hostmaster.yahoo-inc.com.
+	query_test.go:260: 600
+	query_test.go:261: 300
+	query_test.go:265: [yahoo.com.	162019	IN	NS	ns1.yahoo.com. yahoo.com.	162019	IN	NS	ns4.yahoo.com. yahoo.com.	162019	IN	NS	ns5.yahoo.com. yahoo.com.	162019	IN	NS	ns6.yahoo.com. yahoo.com.	162019	IN	NS	ns2.yahoo.com. yahoo.com.	162019	IN	NS	ns3.yahoo.com.]
+	query_test.go:266: ----------------------------------
+	query_test.go:250: ----------------------------------
+	query_test.go:251: yahoo.com
+	query_test.go:254: yahoo.com.
+	query_test.go:255: 6
+	query_test.go:256: 1
+	query_test.go:257: ns1.yahoo.com.
+	query_test.go:258: 1814400
+	query_test.go:259: hostmaster.yahoo-inc.com.
+	query_test.go:260: 600
+	query_test.go:261: 300
+	query_test.go:265: [yahoo.com.	162019	IN	NS	ns2.yahoo.com. yahoo.com.	162019	IN	NS	ns1.yahoo.com. yahoo.com.	162019	IN	NS	ns4.yahoo.com. yahoo.com.	162019	IN	NS	ns3.yahoo.com. yahoo.com.	162019	IN	NS	ns5.yahoo.com. yahoo.com.	162019	IN	NS	ns6.yahoo.com.]
+	query_test.go:266: ----------------------------------
+	query_test.go:250: ----------------------------------
+	query_test.go:251: weibo.cn
+	query_test.go:254: weibo.cn.
+	query_test.go:255: 6
+	query_test.go:256: 1
+	query_test.go:257: ns1.sina.com.cn.
+	query_test.go:258: 604800
+	query_test.go:259: zhihao.staff.sina.com.cn.
+	query_test.go:260: 600
+	query_test.go:261: 7200
+	query_test.go:265: [weibo.cn.	10223	IN	NS	ns3.sina.com.cn. weibo.cn.	10223	IN	NS	ns1.sina.com.cn. weibo.cn.	10223	IN	NS	ns2.sina.com.cn. weibo.cn.	10223	IN	NS	ns4.sina.com.cn.]
+	query_test.go:266: ----------------------------------
+	query_test.go:250: ----------------------------------
+	query_test.go:251: www.baidu.com
+	query_test.go:254: baidu.com.
+	query_test.go:255: 6
+	query_test.go:256: 1
+	query_test.go:257: dns.baidu.com.
+	query_test.go:258: 2592000
+	query_test.go:259: sa.baidu.com.
+	query_test.go:260: 7200
+	query_test.go:261: 300
+	query_test.go:265: [baidu.com.	18502	IN	NS	ns3.baidu.com. baidu.com.	18502	IN	NS	ns4.baidu.com. baidu.com.	18502	IN	NS	ns2.baidu.com. baidu.com.	18502	IN	NS	ns7.baidu.com. baidu.com.	18502	IN	NS	dns.baidu.com.]
+	query_test.go:266: ----------------------------------
+PASS
+ok  	command-line-arguments	0.627s
